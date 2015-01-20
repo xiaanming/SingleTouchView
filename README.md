@@ -2,7 +2,7 @@
 Single finger control image scale rotate and translate， there is a custom view in Android
 
 # ScreenShot
-
+![https://github.com/xiaanming/SingleTouchView/blob/master/sample.gif][2]
 
 # Usage
 ``` xml
