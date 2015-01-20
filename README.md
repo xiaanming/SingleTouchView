@@ -20,3 +20,6 @@ Single finger control image scale rotate and translate， there is a custom view
         </attr>
     </declare-styleable>
 </resources>
+
+#Effect
+[https://github.com/xiaanming/SingleTouchView/blob/master/sample.gif]
