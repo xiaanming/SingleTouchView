@@ -1,0 +1,14 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <com.example.singletouchview.SingleTouchView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/SingleTouchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:scale="1.2"
+            app:src="@drawable/scale"
+            app:frameColor="#0022ff"
+            app:controlLocation="right_top"/>
+
+</merge>
