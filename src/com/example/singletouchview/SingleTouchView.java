@@ -384,6 +384,8 @@ public class SingleTouchView extends View {
 							/ 2, mControlPoint.y + mDrawableHeight / 2);
 			controlDrawable.draw(canvas);
 		}
+		
+		
 	}
 	
 	
@@ -395,6 +397,8 @@ public class SingleTouchView extends View {
 		int bitmapWidth = (int)(mBitmap.getWidth() * mScale);
 		int bitmapHeight = (int)(mBitmap.getHeight()* mScale);
 		computeRect(-framePadding, -framePadding, bitmapWidth + framePadding, bitmapHeight + framePadding, mDegree);
+		
+		adjustLayout();
 		
 		//设置缩放比例
 		matrix.setScale(mScale, mScale);
