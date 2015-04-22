@@ -287,8 +287,12 @@ public class SingleTouchView extends View {
 		int newPaddingLeft = (int) (mCenterPoint.x - actualWidth /2);
 		int newPaddingTop = (int) (mCenterPoint.y - actualHeight/2);
 		
-		mViewPaddingLeft = newPaddingLeft;
-		mViewPaddingTop = newPaddingTop;
+		if(mViewPaddingLeft != newPaddingLeft || mViewPaddingTop != newPaddingTop){
+			mViewPaddingLeft = newPaddingLeft;
+			mViewPaddingTop = newPaddingTop;
+			
+//			layout(newPaddingLeft, newPaddingTop, newPaddingLeft + actualWidth, newPaddingTop + actualHeight);
+		}
 		
 		layout(newPaddingLeft, newPaddingTop, newPaddingLeft + actualWidth, newPaddingTop + actualHeight);
 	}
