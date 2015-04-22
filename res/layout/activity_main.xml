@@ -1,14 +1,36 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+     <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+     
+     
+     <FrameLayout 
+         android:id="@+id/content"
+         android:layout_width="match_parent"
+   		 android:layout_height="match_parent">
+    
 
         <com.example.singletouchview.SingleTouchView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/SingleTouchView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:scale="1.2"
-            app:src="@drawable/scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:scale="0.8"
+            app:src="@drawable/keaipin_dj_002"
             app:frameColor="#0022ff"
-            app:controlLocation="right_top"/>
+            app:frameWidth="1dp"
+            app:controlLocation="right_bottom"/>
+        
+        
+      </FrameLayout>
 
-</merge>
+       
+
+</LinearLayout>

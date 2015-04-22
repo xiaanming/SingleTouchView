@@ -38,7 +38,7 @@ public class SingleTouchView extends View {
 	/**
 	 * 图片的最大缩放比例
 	 */
-	public static final float MAX_SCALE = 10.0f;
+	public static final float MAX_SCALE = 4.0f;
 	
 	/**
 	 * 图片的最小缩放比例
@@ -259,7 +259,7 @@ public class SingleTouchView extends View {
 		mDrawableWidth = controlDrawable.getIntrinsicWidth();
 		mDrawableHeight = controlDrawable.getIntrinsicHeight();
 		
-		transformDraw();
+		transformDraw(); 
 	}
 	
 	
@@ -287,12 +287,10 @@ public class SingleTouchView extends View {
 		int newPaddingLeft = (int) (mCenterPoint.x - actualWidth /2);
 		int newPaddingTop = (int) (mCenterPoint.y - actualHeight/2);
 		
-		if(mViewPaddingLeft != newPaddingLeft || mViewPaddingTop != newPaddingTop){
-			mViewPaddingLeft = newPaddingLeft;
-			mViewPaddingTop = newPaddingTop;
-			
-			layout(newPaddingLeft, newPaddingTop, newPaddingLeft + actualWidth, newPaddingTop + actualHeight);
-		}
+		mViewPaddingLeft = newPaddingLeft;
+		mViewPaddingTop = newPaddingTop;
+		
+		layout(newPaddingLeft, newPaddingTop, newPaddingLeft + actualWidth, newPaddingTop + actualHeight);
 	}
 	
 	
@@ -360,12 +358,11 @@ public class SingleTouchView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		//每次draw之前调整View的位置和大小
-		adjustLayout();
-		
 		super.onDraw(canvas);
 		
 		if(mBitmap == null) return;
-		canvas.drawBitmap(mBitmap, matrix, null);
+		canvas.drawBitmap(mBitmap, matrix, mPaint);
+		
 		
 		//处于可编辑状态才画边框和控制图标
 		if(isEditable){
@@ -385,6 +382,8 @@ public class SingleTouchView extends View {
 			controlDrawable.draw(canvas);
 		}
 		
+		adjustLayout();
+		
 		
 	}
 	
@@ -394,11 +393,10 @@ public class SingleTouchView extends View {
 	 * 设置Matrix, 强制刷新
 	 */
 	private void transformDraw(){
+		if(mBitmap == null) return;
 		int bitmapWidth = (int)(mBitmap.getWidth() * mScale);
 		int bitmapHeight = (int)(mBitmap.getHeight()* mScale);
 		computeRect(-framePadding, -framePadding, bitmapWidth + framePadding, bitmapHeight + framePadding, mDegree);
-		
-		adjustLayout();
 		
 		//设置缩放比例
 		matrix.setScale(mScale, mScale);
@@ -407,7 +405,7 @@ public class SingleTouchView extends View {
 		//设置画该图片的起始点
 		matrix.postTranslate(offsetX + mDrawableWidth/2, offsetY + mDrawableHeight/2);
 		
-		invalidate();
+		adjustLayout();
 	}
 	
 	
@@ -487,6 +485,8 @@ public class SingleTouchView extends View {
 				// 修改中心点
 				mCenterPoint.x += mCurMovePointF.x - mPreMovePointF.x;
 				mCenterPoint.y += mCurMovePointF.y - mPreMovePointF.y;
+				
+				System.out.println(this + "move = " + mCenterPoint);
 				
 				adjustLayout();
 			}
